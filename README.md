@@ -1,3 +1,8 @@
+# PAVITHRA S
+
+# 212223220072
+
+
 # 4-BIT-RIPPLE-COUNTER
 
 **AIM:**
@@ -23,18 +28,78 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 ![image](https://github.com/naavaneetha/4-BIT-RIPPLE-COUNTER/assets/154305477/85e1958a-2fc1-49bb-9a9f-d58ccbf3663c)
 
 **Procedure**
-
-/* write all the steps invloved */
-
+1.Increment count on each positive edge of the clock
+2.Reset count to zero when it reaches 15.
+3.Generate clock signal (clk)
+4.Instantiate the RippleCounter module
+5.Conduct functional testing by displaying the count at each clock cycle for 16 cycles.
 **PROGRAM**
-
 /* Program for 4 Bit Ripple Counter and verify its truth table in quartus using Verilog programming.
 
- Developed by: RegisterNumber:
+ Developed by:PAVITHRA S
+ RegisterNumber:212223220072
+module RippleCounter(
+   input wire clk,  // Clock input
+   output reg [3:0] count // 4-bit counter output
+);
+
+// Counter logic
+always @(posedge clk) begin
+   if (count == 4'b1111) // Reset when count reaches 15
+       count <= 4'b0000;
+   else
+       count <= count + 1; // Increment count
+end
+
+endmodule
+
+// Testbench
+module RippleCounter_tb;
+
+// Inputs
+reg clk;
+
+// Outputs
+wire [3:0] count;
+
+// Instantiate the counter
+RippleCounter uut(
+   .clk(clk),
+   .count(count)
+);
+
+// Clock generation
+initial begin
+   clk = 0;
+   forever #5 clk = ~clk; // Toggle clock every 5 time units
+end
+
+// Stimulus
+initial begin
+   // Wait for a few clock cycles
+   #10;
+   
+   // Display header
+   $display("Time | Count");
+   $display("-----------------");
+   
+   // Functional table testing
+   // Increment count 16 times and display the count
+   repeat (16) begin
+       #5; // Wait for one clock cycle
+       $display("%4d | %b", $time, count);
+   end
+   
+   // End simulation
+   $finish;
+end
+
+endmodule 
 */
-
 **RTL LOGIC FOR 4 Bit Ripple Counter**
-
+![331223779-9cbf71a5-4809-4437-a99f-24d928634e94](https://github.com/user-attachments/assets/ca59374a-6b65-440a-bd45-c2fa292385ed)
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
+![331223807-3e402c9e-f477-44a3-9f01-cd17df84ba77](https://github.com/user-attachments/assets/870841c0-4f51-4f1f-b05d-f5b847244899)
 
 **RESULTS**
+RESULTS Thus the program executed succesfully.
