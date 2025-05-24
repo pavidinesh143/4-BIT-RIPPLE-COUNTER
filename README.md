@@ -93,9 +93,9 @@ initial begin
    // End simulation
    $finish;
 end
-
 endmodule 
 */
+
 **RTL LOGIC FOR 4 Bit Ripple Counter**
 ![331223779-9cbf71a5-4809-4437-a99f-24d928634e94](https://github.com/user-attachments/assets/ca59374a-6b65-440a-bd45-c2fa292385ed)
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
